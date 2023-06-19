@@ -55,6 +55,9 @@ const updateTodoStatus = async (req,res)=>{
     try {
         const sortedTodos = await Todo.find({completed:true})
         .sort({createdAt:-1});
+        if (sortedTodos.length===0){
+            return res.status(404).json({message:"No completed todos found"})
+        }
         res.json(sortedTodos)
     }catch(error){
         console.error('error fetching for completed Todos',error);

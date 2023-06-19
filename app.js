@@ -4,7 +4,7 @@ const {default :mongoose} = require('mongoose');
 
 
 const app = express();
-const port = process.env.port;
+const port = process.env.PORT;
 
 mongoose.connect("mongodb://localhost:27017/Todo",{
     useNewUrlParser:true,
