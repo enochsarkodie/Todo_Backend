@@ -8,7 +8,8 @@ const port = process.env.PORT;
 
 mongoose.connect("mongodb://localhost:27017/Todo",{
     useNewUrlParser:true,
-}).then(()=>console.log("Database Connectin successfull!!"))
+    useUnifiedTopology:true
+}).then(()=>console.log("Database Connection successfull!!"))
   .catch(err=>console.error('Error connecting to the database...',err));
 
 app.use(express.json());
