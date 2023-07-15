@@ -5,12 +5,16 @@ const {default :mongoose} = require('mongoose');
 
 const app = express();
 const port = process.env.PORT;
+const DB = process.env.DATABASE
+ 
+mongoose.connect(DB,{
+  useNewUrlParser:true,
+  // useCreateIndex:true,
+  // useFindAndModify:false,
 
-mongoose.connect("mongodb://localhost:27017/Todo",{
-    useNewUrlParser:true,
-    useUnifiedTopology:true
-}).then(()=>console.log("Database Connection successfull!!"))
-  .catch(err=>console.error('Error connecting to the database...',err));
+}).then(con =>{
+  console.log(con.connections);
+  console.log('DB connection Successful');})
 
 app.use(express.json());
 app.use('/todos/',require('./routes/todoRoutes'));
