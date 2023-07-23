@@ -4,9 +4,10 @@ const {default :mongoose} = require('mongoose');
 
 
 const app = express();
+const cors =  require('cors')
 const port = process.env.PORT;
 const DB = process.env.DATABASE
- 
+ console.log(DB)
 mongoose.connect(DB,{
   useNewUrlParser:true,
   // useCreateIndex:true,
@@ -18,6 +19,7 @@ mongoose.connect(DB,{
 
 app.use(express.json());
 app.use('/todos/',require('./routes/todoRoutes'));
+app.use(cors)
 
 app.listen(port, ()=> {
     console.log('listening to http://localhost:8000')
