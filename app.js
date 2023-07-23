@@ -4,9 +4,12 @@ const {default :mongoose} = require('mongoose');
 
 
 const app = express();
+const cors =  require('cors')
+app.use(cors())
+
 const port = process.env.PORT;
 const DB = process.env.DATABASE
- 
+ console.log(DB)
 mongoose.connect(DB,{
   useNewUrlParser:true,
   // useCreateIndex:true,
